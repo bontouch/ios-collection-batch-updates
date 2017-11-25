@@ -27,7 +27,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol BMAUpdatableCollectionItem <NSObject>
-@property (nonatomic, readonly, copy) NSString *uid;
+@property (nonatomic, readonly, copy) id uid;
 @optional
 @property (nonatomic, readonly, nullable) id userInfo;
 

@@ -22,22 +22,11 @@
  THE SOFTWARE.
  */
 
-#import "BMACollectionUpdates.h"  // BMAUpdatableCollectionItem, BMAUpdatableCollectionSection
+
 #import "BMAExampleViewController.h"
 
 #define SHOW_CONFIGURATION_CONTROLS 0
 
-@interface BMAExampleItemsSection : NSObject <BMAUpdatableCollectionSection>
-@property (nonatomic, copy) NSArray *items;
-@property (nonatomic, copy) NSString *uid;
-- (instancetype)initWithId:(NSString *)sectionId items:(NSArray *)items;
-@end
-
-@interface BMAExampleItem : NSObject <BMAUpdatableCollectionItem>
-@property (nonatomic, copy) NSString *uid;
-@property (nonatomic, strong) id userInfo;
-- (instancetype)initWithId:(NSNumber *)itemId userInfo:(id)userInfo;
-@end
 
 #define ITEM(ID, USER_INFO) [[BMAExampleItem alloc] initWithId:@(ID) userInfo:@(USER_INFO)]
 
@@ -383,7 +372,7 @@
 }
 
 - (NSUInteger)hash {
-    return self.uid.hash ^ [self.userInfo hash];
+    return [self.uid hash] ^ [self.userInfo hash];
 }
 
 - (NSString *)description {

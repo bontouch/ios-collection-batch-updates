@@ -97,8 +97,9 @@
 
 - (void)reloadCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     id<BMAUpdatableCollectionSection> section = self.sections[indexPath.section];
-    id<BMAUpdatableCollectionItem> item = section.items[indexPath.row];
-    UIColor *color = self.itemColors[@(item.uid.integerValue % self.itemColors.count)];
+    BMAExampleItem * item = section.items[indexPath.row];
+    NSString * s = item.uid;
+    UIColor *color = self.itemColors[@(s.integerValue % self.itemColors.count)];
     cell.backgroundColor = color;
     cell.layer.cornerRadius = CGRectGetWidth(cell.bounds) / 2;
 

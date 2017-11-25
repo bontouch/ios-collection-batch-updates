@@ -24,7 +24,20 @@
 
 @import UIKit;
 
-@protocol BMAUpdatableCollectionSection;
+#import "BMACollectionUpdates.h"  // BMAUpdatableCollectionItem, BMAUpdatableCollectionSection
+
+
+@interface BMAExampleItemsSection : NSObject <BMAUpdatableCollectionSection>
+@property (nonatomic, copy) NSArray *items;
+@property (nonatomic, copy) id uid;
+- (instancetype)initWithId:(NSString *)sectionId items:(NSArray *)items;
+@end
+
+@interface BMAExampleItem : NSObject <BMAUpdatableCollectionItem>
+@property (nonatomic, copy) id uid;
+@property (nonatomic, strong) id userInfo;
+- (instancetype)initWithId:(NSNumber *)itemId userInfo:(id)userInfo;
+@end
 
 @interface BMAExampleViewController : UIViewController
 

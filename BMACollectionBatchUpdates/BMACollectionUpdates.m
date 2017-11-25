@@ -61,7 +61,7 @@
             NSInteger oldIndex = NSNotFound;
             if (oldSections) {
                 oldIndex = [oldSections indexOfObjectPassingTest:^BOOL(id<BMAUpdatableCollectionSection> oldSection, NSUInteger idx, BOOL *stop) {
-                    return [newSection.uid isEqualToString:oldSection.uid];
+                    return [newSection.uid isEqual:oldSection.uid];
                 }];
             }
 
@@ -75,7 +75,7 @@
         for (NSInteger oldIndex = 0; oldIndex < oldSections.count; ++oldIndex) {
             id<BMAUpdatableCollectionSection> oldSection = oldSections[oldIndex];
             NSInteger newIndex = [newSections indexOfObjectPassingTest:^BOOL(id<BMAUpdatableCollectionSection> newSection, NSUInteger idx, BOOL *stop) {
-                return [newSection.uid isEqualToString:oldSection.uid];
+                return [newSection.uid isEqual:oldSection.uid];
             }];
 
             if (oldIndex != newIndex) {
@@ -89,7 +89,7 @@
         if (sectionsPriorityOrder) {
             for (NSString *sectionId in sectionsPriorityOrder) {
                 NSInteger index = [newSections indexOfObjectPassingTest:^BOOL(id<BMAUpdatableCollectionSection> newSection, NSUInteger idx, BOOL *stop) {
-                    return [newSection.uid isEqualToString:sectionId];
+                    return [newSection.uid isEqual:sectionId];
                 }];
                 if (index != NSNotFound) {
                     NSNumber *sectionIndex = @(index);
@@ -216,7 +216,7 @@
                                                                         object:item.uid]];
                 } else {
                     id<BMAUpdatableCollectionSection> newSection = newSections[newIndexPath.section];
-                    if ([newSection.uid isEqualToString:oldSection.uid] && oldIndex == newIndexPath.item) {
+                    if ([newSection.uid isEqual:oldSection.uid] && oldIndex == newIndexPath.item) {
                         // Item remains at the same place
                         continue;
                     }

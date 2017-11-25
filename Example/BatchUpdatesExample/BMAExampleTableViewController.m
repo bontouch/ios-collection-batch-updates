@@ -75,7 +75,9 @@
 
 - (void)reloadCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     id<BMAUpdatableCollectionSection> section = self.sections[indexPath.section];
-    id<BMAUpdatableCollectionItem> item = section.items[indexPath.row];
+    BMAExampleItem * item = section.items[indexPath.row];
+    
+    
     UIColor *color = self.itemColors[@([item.uid integerValue] % self.itemColors.count)];
     cell.backgroundColor = color;
 
